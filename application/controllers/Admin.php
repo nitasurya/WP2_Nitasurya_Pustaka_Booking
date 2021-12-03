@@ -14,7 +14,7 @@ class Admin extends CI_Controller
         $data = [
             'judul'     => "Dashboard",
             'user'      => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
-            'anggota'   => $this->db->get_where('user', s['role_id' => 2])->result_array(),
+            'anggota'   => $this->db->get_where('user', ['role_id' => 2])->result_array(),
             'buku'      => $this->ModelBuku->getBuku()->result_array()
         ];
         $detail         = $this->db->query("SELECT * FROM booking,booking_detail WHERE DAY(curdate()) < DAY(batas_ambil) AND booking.id_booking=booking_detail.id_booking")->result_array();
